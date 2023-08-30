@@ -25,6 +25,7 @@ public class Jump : MonoBehaviour
 
   private void OnCollisionEnter(Collision collision)
   {
+    //接地しているかの判定
     if(collision.gameObject.CompareTag("Floor"))
     {
         isJumping = false;
