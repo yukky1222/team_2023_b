@@ -19,7 +19,7 @@ public class EnemyShot : MonoBehaviour
     {
           count += 1;
  
-        if(count % 60 == 0)
+        if(count % 300 == 0)
         {
             GameObject shell = Instantiate(shellPrefab, transform.position, Quaternion.identity);
             Rigidbody shellRb = shell.GetComponent<Rigidbody>();
