@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-
-
+public class cameraMovement : MonoBehaviour
 {
     Vector3 pos;
-
-     [SerializeField]
-    private cameraMovement cameraMovement;
     private bool STOP;
     
     // Start is called before the first frame update
@@ -19,15 +14,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnCollisionEnter(Collision collision)
+    public void CAMERASTOP()
 {
-  if (collision.gameObject.CompareTag("Enemy"))
-  {
     STOP = true;
-    cameraMovement.CAMERASTOP();
-     Invoke("PLAYERSTOP",1f);
+     Invoke("CAMERASTART",1f);
   }
-}
+
     void FixedUpdate()
     {
          if (STOP) {
@@ -36,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetKey(KeyCode.W))
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+           
             pos.x += 0.1f;
             this.transform.position = pos;
     
@@ -44,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            
             pos.x -= 0.1f;
             this.transform.position = pos;
     
@@ -52,9 +44,10 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-    void PLAYERSTOP()
+    void CAMERASTART()
     {
-        pos.x = this.transform.position.x;
+        
+        pos.x -=5.15f;
         STOP = false;
     }
 }
