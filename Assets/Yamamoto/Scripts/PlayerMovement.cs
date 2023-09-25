@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         pos = this.transform.position;
+        MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
+meshRenderer.material.color = new Color(0, 0, 0, 0.0f);
     }
 
     // Update is called once per frame

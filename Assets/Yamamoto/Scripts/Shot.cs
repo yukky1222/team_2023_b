@@ -7,6 +7,10 @@ public class Shot : MonoBehaviour
    
    public GameObject bullet;
     public float bulletSpeed;
+
+     [SerializeField]
+    private WaterReload WaterReload;
+    public bool Reload;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +20,10 @@ public class Shot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(1))
+        if (Reload == true && Input.GetMouseButtonUp(1))
         {
+            Reload = false;
+            WaterReload.ReloadReset();
             GameObject Bullet = (GameObject)Instantiate(bullet, transform.position, Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
             Rigidbody bulletRb = Bullet.GetComponent<Rigidbody>();
             bulletRb.AddForce(transform.forward * -bulletSpeed);
@@ -26,4 +32,8 @@ public class Shot : MonoBehaviour
           
         }
     }   
+    public void ReWater()
+    {
+        Reload = true;
+    }
 }
