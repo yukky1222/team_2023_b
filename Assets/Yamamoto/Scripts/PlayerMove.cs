@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-
-
+public class PlayerMove : MonoBehaviour
 {
     Vector3 pos;
 
@@ -84,9 +82,4 @@ public class PlayerMovement : MonoBehaviour
        
     }
   }
-
-  
-   
-  
-
 }

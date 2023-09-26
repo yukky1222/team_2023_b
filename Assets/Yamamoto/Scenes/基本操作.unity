@@ -1113,6 +1113,7 @@ GameObject:
   - component: {fileID: 1514480577}
   - component: {fileID: 1514480578}
   - component: {fileID: 1514480579}
+  - component: {fileID: 1514480580}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -1220,6 +1221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cb52c31e7ac0a43a9233b07650ea1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pos: {x: 0, y: 0, z: 0}
+  Default: {x: 0, y: 0, z: 0}
+  STOP: 0
+  rb: {fileID: 0}
+  jumpForce: 20
   isJumping: 0
 --- !u!54 &1514480576
 Rigidbody:
@@ -1287,6 +1293,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74af1c5ad0dcf84479c0dc6453268cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1514480580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514480567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e422da95ff8754faca07a33103db46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isJumping: 0
 --- !u!1 &1569226372
 GameObject:
   m_ObjectHideFlags: 0
