@@ -6,6 +6,7 @@ public class Shot : MonoBehaviour
 {
    
    public GameObject bullet;
+   public GameObject BulletZ;
     public float bulletSpeed;
 
      [SerializeField]
@@ -18,7 +19,7 @@ public class Shot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   public void Update()
     {
         if (Reload == true && Input.GetMouseButtonUp(1))
         {
@@ -27,13 +28,18 @@ public class Shot : MonoBehaviour
             GameObject Bullet = (GameObject)Instantiate(bullet, transform.position, Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
             Rigidbody bulletRb = Bullet.GetComponent<Rigidbody>();
             bulletRb.AddForce(transform.forward * -bulletSpeed);
+            BulletZ = Bullet;
             Destroy(Bullet, 3.0f);
-           
-          
         }
+        
     }   
     public void ReWater()
     {
         Reload = true;
     }
+    public void HitBullet()
+    {
+            Destroy(BulletZ); 
+        }
+   
 }

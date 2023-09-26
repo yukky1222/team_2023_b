@@ -8,16 +8,21 @@ public class PlayerMovement : MonoBehaviour
 {
     Vector3 pos;
 
-     [SerializeField]
-    private cameraMovement cameraMovement;
+    Vector3 Default;
+
+    
     private bool STOP;
+    Rigidbody rigidbody;
+  float jumpForce = 20.0f;
+  public bool isJumping = false;
     
     // Start is called before the first frame update
     void Start()
     {
         pos = this.transform.position;
-        MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
-meshRenderer.material.color = new Color(0, 0, 0, 0.0f);
+        Default = this.transform.position;
+       
+this.rigidbody = this.gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -26,37 +31,62 @@ meshRenderer.material.color = new Color(0, 0, 0, 0.0f);
   if (collision.gameObject.CompareTag("Enemy"))
   {
     STOP = true;
-    cameraMovement.CAMERASTOP();
+    
      Invoke("PLAYERSTOP",1f);
   }
+   if(collision.gameObject.CompareTag("Floor"))
+    {
+        isJumping = false;
+       
+    }
 }
     void FixedUpdate()
     {
+        
+        if(isJumping == true){
+            pos.y = this.transform.position.y;
+        }
          if (STOP) {
         return;
          }
-        
+
         if (Input.GetKey(KeyCode.W))
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            pos.x += 0.1f;
-            this.transform.position = pos;
+            pos.x += 0.15f;
+             this.transform.position = pos;
     
            
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            pos.x -= 0.1f;
+            pos.x -= 0.15f;
             this.transform.position = pos;
-    
         
         }
-        
+       
     }
     void PLAYERSTOP()
     {
         pos.x = this.transform.position.x;
+        //地面の標高
+        pos.y = Default.y;
         STOP = false;
     }
+    
+
+  void Update()
+  {
+    //ジャンプする
+    if(Input.GetKeyDown(KeyCode.Space) && !isJumping)
+    {
+        this.rigidbody.AddForce(transform.up * this.jumpForce, ForceMode.VelocityChange);
+        isJumping = true;
+       
+    }
+  }
+
+  
+   
+  
+
 }

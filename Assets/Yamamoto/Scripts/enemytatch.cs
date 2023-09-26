@@ -25,8 +25,7 @@ public class enemytatch : MonoBehaviour
     isInvincible = true;
  
     // ここにノックバック処理
- var rigidbody = GetComponent<Rigidbody>();
-rigidbody.AddForce(-transform.right * 10f, ForceMode.VelocityChange);
+
     
     Invoke("STAR",1f);
   }

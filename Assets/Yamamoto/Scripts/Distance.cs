@@ -8,9 +8,12 @@ public class Distance : MonoBehaviour
  
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject player;
+
+  
    
   Vector3 pos;
   private bool STOP;
+  private bool await;
     
    
     void Start()
@@ -44,22 +47,22 @@ rigidbody.AddForce(-transform.right * 10f, ForceMode.VelocityChange);
 
        
  
-        if (STOP == false ){
-        if(dis > -20)
+        if (STOP == false){
+        if(dis > -25)
         {
         if(dis < 0)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            pos.x -= 0.05f;
+           Invoke("hidari",1f);
+           
             
         }
         }
-        if(dis < 10)
+        if(dis < 20)
         {
         if(dis > 0)
         {
-             transform.rotation = Quaternion.Euler(0, 0, 0);
-            pos.x += 0.05f;
+            Invoke("migi",1f);
+           
             
         }
       
@@ -73,4 +76,16 @@ rigidbody.AddForce(-transform.right * 10f, ForceMode.VelocityChange);
     pos.x = this.transform.position.x;
     STOP = false;
     }
+   
+    void hidari()
+    {
+       transform.rotation = Quaternion.Euler(0, 180, 0);
+        pos.x -= 0.1f;
+    }
+    void migi()
+    {
+       transform.rotation = Quaternion.Euler(0, 0, 0);
+        pos.x += 0.1f;
+    }
 }
+

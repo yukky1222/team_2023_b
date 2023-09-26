@@ -30,7 +30,7 @@ public class cameraMovement : MonoBehaviour
         {
            
             pos.x += 0.1f;
-            this.transform.position = pos;
+            
     
            
         }
@@ -38,11 +38,11 @@ public class cameraMovement : MonoBehaviour
         {
             
             pos.x -= 0.1f;
-            this.transform.position = pos;
+            
     
         
         }
-        
+        this.transform.position = pos;
     }
     void CAMERASTART()
     {
