@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     
     private bool STOP;
-    Rigidbody rigidbody;
+    Rigidbody rb;
   float jumpForce = 20.0f;
   public bool isJumping = false;
     
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         pos = this.transform.position;
         Default = this.transform.position;
        
-this.rigidbody = this.gameObject.GetComponent<Rigidbody>();
+    this.rb = this.gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -79,7 +79,7 @@ this.rigidbody = this.gameObject.GetComponent<Rigidbody>();
     //ジャンプする
     if(Input.GetKeyDown(KeyCode.Space) && !isJumping)
     {
-        this.rigidbody.AddForce(transform.up * this.jumpForce, ForceMode.VelocityChange);
+        this.rb.AddForce(transform.up * this.jumpForce, ForceMode.VelocityChange);
         isJumping = true;
        
     }
