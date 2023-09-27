@@ -15,7 +15,15 @@ public class EnemyShot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void OnWillRenderObject()
+
+{
+
+#if UNITY_EDITOR
+
+	if(Camera.current.name != "SceneCamera"  && Camera.current.name != "Main Camera")
+
+#endif
     {
           count += 1;
  
@@ -31,4 +39,5 @@ public class EnemyShot : MonoBehaviour
             Destroy(shell, 5.0f);
         }
     }
+}
 }
