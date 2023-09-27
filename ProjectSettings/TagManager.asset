@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Floor
   - Bullet
+  - miniYado
   layers:
   - Default
   - TransparentFX
