@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class EnemyStatus : MonoBehaviour
 {
     // Start is called before the first frame update
+    
+    [SerializeField]
+    private BossDead BossDead;
      [SerializeField]
     private int maxHp;
     //　敵のHP
@@ -54,6 +57,10 @@ public class EnemyStatus : MonoBehaviour
     public void HideStatusUI() {
         EHPUI.SetActive(false);
         Destroy(this.gameObject);
+        BossDead.DEAD();
+        
+       
+
 
     }
  

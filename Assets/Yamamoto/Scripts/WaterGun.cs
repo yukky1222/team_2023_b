@@ -36,8 +36,5 @@ public class WaterGun : MonoBehaviour
         }
        
     }
-    void Reset()
-    {
-        transform.eulerAngles = worldAngle;
-    }
+    
 }
