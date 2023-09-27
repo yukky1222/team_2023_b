@@ -473,6 +473,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1206874426333947015, guid: 11de66d20856f8b48826b008ca3c2c71, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6d9d1e5dcb1f8b47b52d76d167e2494, type: 2}
     - target: {fileID: 919132149155446097, guid: 11de66d20856f8b48826b008ca3c2c71, type: 3}
       propertyPath: m_Name
       value: Player3
@@ -790,7 +794,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &949520882
 MonoBehaviour:
@@ -950,6 +954,13 @@ MonoBehaviour:
   max: 0
   velocity: 4
   stopTime: 1
+  len: 0
+  sv: 0
+  maxVelocity: 0
+  box: {fileID: 0}
+  time: 0
+  layermask:
+    m_Bits: 0
 --- !u!65 &1046822169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1639,6 +1650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1214799927}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &2084114924
 GameObject:
   m_ObjectHideFlags: 0
