@@ -8,11 +8,12 @@ TagManager:
   - Floor
   - Bullet
   - miniYado
+  - EBullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

@@ -8,14 +8,17 @@ public class Shot : MonoBehaviour
    public GameObject bullet;
    public GameObject BulletZ;
     public float bulletSpeed;
+    
 
      [SerializeField]
     private WaterReload WaterReload;
     public bool Reload;
+    public AudioClip sound1;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-       
+       audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,8 +31,9 @@ public class Shot : MonoBehaviour
             GameObject Bullet = (GameObject)Instantiate(bullet, transform.position, Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
             Rigidbody bulletRb = Bullet.GetComponent<Rigidbody>();
             bulletRb.AddForce(transform.forward * -bulletSpeed);
+            audioSource.PlayOneShot(sound1);
             BulletZ = Bullet;
-            Destroy(Bullet, 3.0f);
+            Destroy(Bullet, 1.0f);
         }
         
     }   
@@ -37,9 +41,5 @@ public class Shot : MonoBehaviour
     {
         Reload = true;
     }
-    public void HitBullet()
-    {
-            Destroy(BulletZ); 
-        }
-   
+    
 }

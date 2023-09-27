@@ -540,6 +540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd8eaa1f8b92a2428665f652f3d7e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementVolume: 1
+  COUNT: 0
 --- !u!114 &6546593063909582507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e3e33350db1a147a2a448e00b27bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MiniYadoMove: {fileID: 0}
+  BossDead: {fileID: 0}
   maxHp: 1
   hp: 1
   EHPUI: {fileID: 5234387268720691325}

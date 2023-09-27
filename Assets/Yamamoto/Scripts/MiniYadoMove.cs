@@ -53,7 +53,7 @@ rigidbody.AddForce(-transform.right * 10f, ForceMode.VelocityChange);
         
         if(dis < 0)
         {
-           Invoke("hidari",2f);
+           Invoke("hidari",1.2f);
            
             
         }
@@ -61,7 +61,7 @@ rigidbody.AddForce(-transform.right * 10f, ForceMode.VelocityChange);
         
         if(dis > 0)
         {
-            Invoke("migi",2f);
+            Invoke("migi",1.2f);
            
             
         }

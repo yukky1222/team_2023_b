@@ -14,6 +14,7 @@ public class CAMERA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pos.z = this.transform.position.z;
         pos.x = this.transform.position.x;
         transform.position = pos;
         transform.rotation = Quaternion.Euler(0, 0, 0);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DistanceYadokari : MonoBehaviour
 {
@@ -9,32 +10,74 @@ public class DistanceYadokari : MonoBehaviour
 
     [SerializeField]
     private MiniYadoMove MiniYadoMove;
-
-  
+     
+    [SerializeField]
+    
+    private int maxHp;
+    //　敵のHP
+    [SerializeField]
+    private int hp;
+    //　敵の攻撃力
    
-  Vector3 pos;
-  private bool STOP;
-  private bool await;
+    //　HP表示用UI
+    [SerializeField]
+    private GameObject EHPUI;
+    //　HP表示用スライダー
+    private Slider hpSlider;
+
+
+ 
+ 
+    void Start() {
+        hp = maxHp;
+        hpSlider = EHPUI.transform.Find("HPBar").GetComponent<Slider>();
+        hpSlider.value = 1f;
+        
+    }
+ 
+    public void SetHp(int hp) {
+        this.hp = hp;
+ 
+        //　HP表示用UIのアップデート
+        UpdateHPValue();
+ 
+        if (hp <= 0) {
+            //　HP表示用UIを非表示にする
+            HideStatusUI();
+        }
+    }
+    
+ 
+    public int GetHp() {
+        return hp;
+    }
+ 
+    public int GetMaxHp() {
+        return maxHp;
+    }
+ 
+    //　死んだらHPUIを非表示にする
+    public void HideStatusUI() {
+        EHPUI.SetActive(false);
+        Destroy(this.gameObject);
+        MiniYadoMove.DeathParent();
+        
+        
+       
+
+
+    }
+ 
+    public void UpdateHPValue() {
+        hpSlider.value = (float)GetHp() / (float)GetMaxHp();
+    }
+
+
 
  
     
    
-    void Start()
-    {
-         pos = this.transform.position;
-    }
 
-     void OnCollisionEnter(Collision collision)
-{
-  if (collision.gameObject.CompareTag("Player"))
-  {
-    STOP = true;
-     var rigidbody = GetComponent<Rigidbody>();
-rigidbody.AddForce(-transform.right * 10f, ForceMode.VelocityChange);
-    
-    Invoke("STOPoff", 1f);
-  }
-}
     void FixedUpdate()
     {
         /* ターゲットのポジションを取得 */
@@ -50,51 +93,22 @@ rigidbody.AddForce(-transform.right * 10f, ForceMode.VelocityChange);
 
        
  
-        if (STOP == false){
+        
         if(dis > -25)
         {
              MiniYadoMove.letsgo();
-        if(dis < 0)
-        {
-           Invoke("hidari",0.8f);
-           
-            
-        }
-        }
-        if(dis < 20)
-        {
-        if(dis > 0)
-        {
-            Invoke("migi",0.8f);
-           
-            
+        
         }
       
-        }
-   
-        this.transform.position = pos;
+        
        
     
-        }
+        
         
     }
-    void STOPoff()
-    {
-    pos.x = this.transform.position.x;
-    STOP = false;
-    }
-   
-    void hidari()
-    {
-       transform.rotation = Quaternion.Euler(-76, 100, 0);
-        pos.x -= 0.08f;
-       
-    }
-    void migi()
-    {
-       transform.rotation = Quaternion.Euler(-76,280, 0);
-        pos.x += 0.08f;
-    }
 }
+   
+   
+
 
 
