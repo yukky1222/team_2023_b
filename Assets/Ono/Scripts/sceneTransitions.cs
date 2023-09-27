@@ -7,7 +7,7 @@ public class sceneTransitions : MonoBehaviour{
 
     public void ClickStartButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Conversation Scene");
     }
 
 }
